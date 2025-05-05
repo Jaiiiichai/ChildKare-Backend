@@ -3,7 +3,6 @@ const Appointment = require('../models/AppointmentModel'); // Adjust the path as
 const AppointmentServices = {
     createAppointment: async (appointmentData) => {
         const appointment = await Appointment.create({
-          child_id: appointmentData.child_id,
           parent_id: appointmentData.parent_id,
           doctor_id: appointmentData.doctor_id,
           appointment_date: appointmentData.appointment_date,

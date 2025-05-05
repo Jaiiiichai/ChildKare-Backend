@@ -45,6 +45,16 @@ const ChatController = {
       console.error('Error fetching conversation users:', err);
       res.status(500).json({ error: 'Failed to fetch users' });
     }
+  },
+  getConversationUsersForDoctors: async (req, res) => {
+    try {
+      const userId = req.user.id;
+      const users = await ChatService.getConversationUsersForDoctors(userId);
+      res.status(200).json(users);
+    } catch (err) {
+      console.error('Error fetching conversation users:', err);
+      res.status(500).json({ error: 'Failed to fetch users' });
+    }
   }
 };
 

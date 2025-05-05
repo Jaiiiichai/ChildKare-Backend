@@ -15,9 +15,9 @@ router.get('/getAppointmentsByUserId', authMiddleware, AppointmentController.get
 
 
 // Update an appointment
-router.put('/:id', AppointmentController.updateAppointment);
+router.put('/updateAppointment/:id', AppointmentController.updateAppointment);
 
 // Delete an appointment
-router.delete('/:id', AppointmentController.deleteAppointment);
+router.delete('/deleteAppointment/:id', AppointmentController.deleteAppointment);
 
 module.exports = router;

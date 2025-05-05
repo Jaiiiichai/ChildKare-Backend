@@ -7,14 +7,6 @@ const Appointment = sequelize.define('appointment', {
         autoIncrement: true,
         primaryKey: true,
     },
-    child_id: {
-        type: DataTypes.INTEGER,
-        allowNull: true,
-        references: {
-            model: 'child_profile', // Ensure this matches the table name
-            key: 'id',
-        },
-    },
     parent_id: {
         type: DataTypes.INTEGER,
         allowNull: true,
@@ -53,11 +45,6 @@ const Appointment = sequelize.define('appointment', {
 
 // Associations
 Appointment.associate = (models) => {
-    // Associations with the correct profile tables
-    Appointment.belongsTo(models.child_profile, {
-        foreignKey: 'child_id',
-        onDelete: 'CASCADE',
-    });
     Appointment.belongsTo(models.parent_profile, {
         foreignKey: 'parent_id',
         onDelete: 'CASCADE',

@@ -12,4 +12,5 @@ router.get('/history/:userId', authMiddleware, ChatController.getChatHistory);
 // Route to get all users the authenticated user has chatted with
 router.get('/conversations', authMiddleware, ChatController.getConversationUsers);
 
+router.get('/conversationsForDoctors', authMiddleware, ChatController.getConversationUsersForDoctors);
 module.exports = router;
