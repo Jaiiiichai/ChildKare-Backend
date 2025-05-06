@@ -23,8 +23,14 @@ const AppointmentServices = {
                 parent_id: parentId
             }
         });
-    }
-    ,
+    },
+    getAppointmentsByDoctorId: async (doctor_id) => {
+        return await Appointment.findAll({
+            where: {
+                doctor_id: doctor_id
+            }
+        });
+    },
 
     updateAppointment: async (id, updateData) => {
         const appointment = await Appointment.findByPk(id);

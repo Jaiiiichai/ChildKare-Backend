@@ -9,5 +9,6 @@ router.post('/createDoctor', authMiddleware, DoctorController.createUser);
 router.get('/getAllDoctors', DoctorController.getAllDoctors);
 router.get('/getDoctorById',authMiddleware, DoctorController.getDoctorByIdFromToken);
 router.get('/getDoctorById/:id', authMiddleware, DoctorController.getDoctorByIdFromParams); // Assuming you want to get by user ID
+router.put('/updateDoctor', authMiddleware, DoctorController.updateDoctor); // Assuming you want to update by user ID
 
 module.exports = router;

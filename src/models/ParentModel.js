@@ -28,6 +28,10 @@ const ParentProfile = sequelize.define('parent_profile', {
         type: DataTypes.STRING(255),
         allowNull: false,
     },
+    profilePicture: {
+              type: DataTypes.STRING(255),
+              allowNull: false,
+   },
 }, {
   tableName: 'parent_profile',
   timestamps: false,

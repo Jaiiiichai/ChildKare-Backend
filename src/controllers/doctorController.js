@@ -58,7 +58,23 @@ const DoctorController = {
       console.error('Error fetching doctor by ID:', err);
       res.status(500).json({ error: 'Failed to fetch doctor by ID' });
     }
-  }
+  },
+  updateDoctor: async (req, res) => {
+    try {
+      const userId = req.user.id; // Get the user ID from the request parameters
+      const updateData = req.body; // Get the data to update from the request body
+
+      const updatedDoctor = await DoctorService.updateDoctor(userId, updateData);
+      if (!updatedDoctor) {
+        return res.status(404).json({ error: 'Doctor not found' });
+      }
+      res.status(200).json(updatedDoctor);
+    } catch (err) {
+      console.error('Error updating doctor:', err);
+      res.status(500).json({ error: 'Failed to update doctor' });
+    }
+  },
+
 };
 
 module.exports = DoctorController;

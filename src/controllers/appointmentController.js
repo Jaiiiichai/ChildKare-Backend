@@ -1,6 +1,6 @@
 const AppointmentService = require('../services/AppointmentServices');
 const ParentProfile = require('../models/ParentModel'); // Adjust the path as necessary
-
+const DoctorProfile = require('../models/DoctorModel'); // Adjust the path as necessary
 const AppointmentController = {
     createAppointment: async (req, res) => {
         try {
@@ -53,6 +53,30 @@ const AppointmentController = {
     
             // Fetch appointments using parent_id
             const appointments = await AppointmentService.getAppointmentsByParentId(parentProfile.id);
+    
+            if (!appointments || appointments.length === 0) {
+                return res.status(404).json({ error: 'No appointments found for this parent' });
+            }
+    
+            res.status(200).json(appointments);
+        } catch (error) {
+            console.error('Error fetching appointments by user ID:', error);
+            res.status(500).json({ error: 'Error fetching appointments' });
+        }
+    },
+    getAppointmentsByDoctorId: async (req, res) => {
+        try {
+            const userId = req.user.id;
+    
+            // Get parent profile based on the logged-in user ID
+            const doctorProfile = await DoctorProfile.findOne({ where: { user_id: userId } });
+    
+            if (!doctorProfile) {
+                return res.status(404).json({ error: 'Parent profile not found' });
+            }
+    
+            // Fetch appointments using parent_id
+            const appointments = await AppointmentService.getAppointmentsByDoctorId(doctorProfile.id);
     
             if (!appointments || appointments.length === 0) {
                 return res.status(404).json({ error: 'No appointments found for this parent' });

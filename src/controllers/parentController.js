@@ -53,7 +53,22 @@ const ParentController = {
             console.error('Error retrieving parent profile:', err);
             res.status(500).json({ error: 'Error retrieving parent profile' });
         }
-    }
+    },
+    updateParent: async (req, res) => {
+        try {
+          const userId = req.user.id; // Get the user ID from the request parameters
+          const updateData = req.body; // Get the data to update from the request body
+    
+          const updatedParent = await ParentService.updateParentProfile(userId, updateData);
+          if (!updatedParent) {
+            return res.status(404).json({ error: 'Doctor not found' });
+          }
+          res.status(200).json(updatedParent);
+        } catch (err) {
+          console.error('Error updating doctor:', err);
+          res.status(500).json({ error: 'Failed to update doctor' });
+        }
+      },
 };
 
 module.exports = ParentController;

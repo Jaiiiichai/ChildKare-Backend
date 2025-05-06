@@ -36,6 +36,10 @@ const DoctorProfile = sequelize.define('doctor_profile', {
             type: DataTypes.STRING(255),
             allowNull: false,
         },
+        profilePicture: {
+          type: DataTypes.STRING(255),
+          allowNull: false,
+      },
     }, {
       tableName: 'doctor_profile',
       timestamps: false,

@@ -12,6 +12,7 @@ router.get('/getAppointments', AppointmentController.getAppointments);
 // Get a specific appointment by ID
 // ✅ Rename route and use the actual function name
 router.get('/getAppointmentsByUserId', authMiddleware, AppointmentController.getAppointmentsByUserId);
+router.get('/getAppointmentsByDoctorId', authMiddleware, AppointmentController.getAppointmentsByDoctorId);
 
 
 // Update an appointment

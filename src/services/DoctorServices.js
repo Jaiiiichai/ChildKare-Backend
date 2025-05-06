@@ -22,6 +22,11 @@ const DoctorService = {
     const doctor = await Doctor.findOne({ where: { user_id: id } });
     return doctor;
   },
+  updateDoctor: async(id,updateData) => {
+    const doctor = await Doctor.findOne({ where: { user_id: id } });
+    if (!doctor) throw new Error('Doctor not found');
+    return await doctor.update(updateData);
+  }
 };
 
 module.exports = DoctorService;

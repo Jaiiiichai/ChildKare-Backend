@@ -54,7 +54,7 @@ const ChatService = {
                 [Op.in]: Array.from(userIds),
             },
         },
-        attributes: ['user_id', 'first_name', 'last_name'], // Add more fields if needed
+        attributes: ['user_id', 'first_name', 'last_name','profilePicture'], // Add more fields if needed
     });
 
     return doctors;
@@ -85,7 +85,7 @@ getConversationUsersForDoctors: async (userId) => {
               [Op.in]: Array.from(userIds),
           },
       },
-      attributes: ['user_id', 'first_name', 'last_name'], // Add more fields if needed
+      attributes: ['user_id', 'first_name', 'last_name','profilePicture'], // Add more fields if needed
   });
 
   return parents;
